@@ -1,0 +1,129 @@
+<div class="container">
+    <nav class="nav-bar">
+      <button class="nav-button" (click)="irParaDashboard()">Dashboard</button>
+      <button class="nav-button" (click)="irParaCadastrarPet()">Cadastrar Pet</button>
+      <button class="nav-button active">Cadastrar Dono</button>
+    </nav>
+  
+    <div class="form-container">
+      <h1>Cadastrar Dono</h1>
+      
+      <form (ngSubmit)="salvarDono()" class="dono-form">
+        <div class="form-row">
+          <div class="form-column">
+            <div class="form-group">
+              <label for="nomeCompleto">Nome Completo</label>
+              <input 
+                type="text" 
+                id="nomeCompleto" 
+                [(ngModel)]="dono().nomeCompleto" 
+                name="nomeCompleto"
+                required
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input 
+                type="tel" 
+                id="telefone" 
+                [(ngModel)]="dono().telefone" 
+                name="telefone"
+                required
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="endereco">Endereço</label>
+              <input 
+                type="text" 
+                id="endereco" 
+                [(ngModel)]="dono().endereco" 
+                name="endereco"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="cidade">Cidade</label>
+              <input 
+                type="text" 
+                id="cidade" 
+                [(ngModel)]="dono().cidade" 
+                name="cidade"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="contatoEmergencia">Contato de Emergência</label>
+              <input 
+                type="text" 
+                id="contatoEmergencia" 
+                [(ngModel)]="dono().contatoEmergencia" 
+                name="contatoEmergencia"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="observacao">Observação</label>
+              <textarea 
+                id="observacao" 
+                [(ngModel)]="dono().observacao" 
+                name="observacao"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+  
+          <div class="form-column">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                [(ngModel)]="dono().email" 
+                name="email"
+                required
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="cep">CEP</label>
+              <input 
+                type="text" 
+                id="cep" 
+                [(ngModel)]="dono().cep" 
+                name="cep"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <input 
+                type="text" 
+                id="estado" 
+                [(ngModel)]="dono().estado" 
+                name="estado"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="telefoneEmergencia">Telefone de Emergência</label>
+              <input 
+                type="tel" 
+                id="telefoneEmergencia" 
+                [(ngModel)]="dono().telefoneEmergencia" 
+                name="telefoneEmergencia"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit" class="submit-button">Cadastrar Dono</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  

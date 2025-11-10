@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { AlunoForm } from './aluno/aluno-form/aluno-form';
-import { AlunoList } from './aluno/aluno-list/aluno-list';
+import { PetForm } from './pet/pet-form/pet-form';
+import { PetList } from './pet/pet-list/pet-list';
 
 export const routes: Routes = [
-    { path: '', component: AlunoList },
-    { path: 'novo', component: AlunoForm }
+    { path: '', component: PetList },
+    { path: 'novo', component: PetForm }
 ];

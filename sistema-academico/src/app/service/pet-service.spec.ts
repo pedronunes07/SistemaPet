@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AlunoService } from './aluno-service';
+import { PetService } from './pet-service';
 
-describe('AlunoService', () => {
-  let service: AlunoService;
+describe('PetService', () => {
+  let service: PetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AlunoService);
+    service = TestBed.inject(PetService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });
+

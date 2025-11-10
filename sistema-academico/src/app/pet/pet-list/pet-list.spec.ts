@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlunoList } from './aluno-list';
+import { PetList } from './pet-list';
 
-describe('AlunoList', () => {
-  let component: AlunoList;
-  let fixture: ComponentFixture<AlunoList>;
+describe('PetList', () => {
+  let component: PetList;
+  let fixture: ComponentFixture<PetList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlunoList]
+      imports: [PetList]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlunoList);
+    fixture = TestBed.createComponent(PetList);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,3 +21,4 @@ describe('AlunoList', () => {
     expect(component).toBeTruthy();
   });
 });
+

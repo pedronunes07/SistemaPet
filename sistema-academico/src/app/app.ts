@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { AlunoForm } from './aluno/aluno-form/aluno-form';
-import { AlunoList } from './aluno/aluno-list/aluno-list';
+import { PetForm } from './pet/pet-form/pet-form';
+import { PetList } from './pet/pet-list/pet-list';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AlunoForm, AlunoList, CommonModule],
+  imports: [RouterOutlet, PetForm, PetList, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

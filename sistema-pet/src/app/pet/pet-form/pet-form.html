@@ -1,0 +1,234 @@
+<div class="container">
+    <nav class="nav-bar">
+      <button class="nav-button" (click)="irParaDashboard()">Dashboard</button>
+      <button class="nav-button active">Cadastrar Pet</button>
+      <button class="nav-button" (click)="irParaCadastrarDono()">Cadastrar Dono</button>
+    </nav>
+  
+    <div class="form-container">
+      <h1>🐾 Cadastrar Pet</h1>
+      
+      <form (ngSubmit)="salvarPet()" class="pet-form">
+        <div class="form-section">
+          <h2>Informações do Pet</h2>
+          <div class="form-row">
+            <div class="form-column">
+              <div class="form-group">
+                <label for="nome">Nome do Pet</label>
+                <input 
+                  type="text" 
+                  id="nome" 
+                  [(ngModel)]="pet().nome" 
+                  name="nome"
+                  required
+                />
+              </div>
+  
+              <div class="form-group">
+                <label for="raca">Raça</label>
+                <input 
+                  type="text" 
+                  id="raca" 
+                  [(ngModel)]="pet().raca" 
+                  name="raca"
+                />
+              </div>
+  
+              <div class="form-group-inline">
+                <div class="form-group">
+                  <label for="peso">Peso</label>
+                  <input 
+                    type="text" 
+                    id="peso" 
+                    [(ngModel)]="pet().peso" 
+                    name="peso"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cor">Cor</label>
+                  <input 
+                    type="text" 
+                    id="cor" 
+                    [(ngModel)]="pet().cor" 
+                    name="cor"
+                  />
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="donoId">Dono</label>
+                <select 
+                  id="donoId" 
+                  [(ngModel)]="pet().donoId" 
+                  name="donoId"
+                  required
+                >
+                  <option value="">Selecione um dono</option>
+                  @for (dono of donos(); track dono.id) {
+                    <option [value]="dono.id">{{ dono.nomeCompleto }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+  
+            <div class="form-column">
+              <div class="form-group">
+                <label for="especie">Espécie</label>
+                <input 
+                  type="text" 
+                  id="especie" 
+                  [(ngModel)]="pet().especie" 
+                  name="especie"
+                  required
+                />
+              </div>
+  
+              <div class="form-group">
+                <label for="idade">Idade</label>
+                <input 
+                  type="text" 
+                  id="idade" 
+                  [(ngModel)]="pet().idade" 
+                  name="idade"
+                />
+              </div>
+  
+              <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <input 
+                  type="text" 
+                  id="sexo" 
+                  [(ngModel)]="pet().sexo" 
+                  name="sexo"
+                />
+              </div>
+  
+              <div class="form-group">
+                <label>Vacinado?</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-label">
+                    <input 
+                      type="radio" 
+                      name="vacinado" 
+                      value="Sim" 
+                      [(ngModel)]="pet().vacinado"
+                    />
+                    Sim
+                  </label>
+                  <label class="checkbox-label">
+                    <input 
+                      type="radio" 
+                      name="vacinado" 
+                      value="Não" 
+                      [(ngModel)]="pet().vacinado"
+                    />
+                    Não
+                  </label>
+                  <label class="checkbox-label">
+                    <input 
+                      type="radio" 
+                      name="vacinado" 
+                      value="Parcialmente" 
+                      [(ngModel)]="pet().vacinado"
+                    />
+                    Parcialmente
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-section">
+          <h2>💉 Vacinas</h2>
+          <div class="vaccines-container">
+            @for (vacina of pet().vacinas; track $index; let i = $index) {
+              <div class="vaccine-item">
+                <div class="form-row">
+                  <div class="form-column">
+                    <div class="form-group">
+                      <label>Nome da Vacina</label>
+                      <input 
+                        type="text" 
+                        [(ngModel)]="pet().vacinas[i].nomeVacina" 
+                        name="nomeVacina{{i}}"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Próxima Dose</label>
+                      <input 
+                        type="date" 
+                        [(ngModel)]="pet().vacinas[i].proximaDose" 
+                        name="proximaDose{{i}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-column">
+                    <div class="form-group">
+                      <label>Data da Aplicação</label>
+                      <input 
+                        type="date" 
+                        [(ngModel)]="pet().vacinas[i].dataAplicacao" 
+                        name="dataAplicacao{{i}}"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Nome do Veterinário</label>
+                      <input 
+                        type="text" 
+                        [(ngModel)]="pet().vacinas[i].nomeVeterinario" 
+                        name="nomeVeterinario{{i}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="remove-vaccine" (click)="removerVacina(i)">
+                  Remover Vacina
+                </button>
+              </div>
+            }
+          </div>
+          
+          <div class="form-actions-inline">
+            <button type="button" class="add-button" (click)="adicionarVacina()">
+              + Adicionar Vacinas
+            </button>
+            <button type="button" class="add-button" (click)="adicionarFoto()">
+              + Adicionar Fotos
+            </button>
+          </div>
+        </div>
+  
+        <div class="form-section">
+          <div class="form-group">
+            <label for="observacoes">Observações</label>
+            <textarea 
+              id="observacoes" 
+              [(ngModel)]="pet().observacoes" 
+              name="observacoes"
+              rows="4"
+              placeholder="Observações gerais sobre o pet..."
+            ></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label for="observacoesMedicas">Observações Médicas</label>
+            <textarea 
+              id="observacoesMedicas" 
+              [(ngModel)]="pet().observacoesMedicas" 
+              name="observacoesMedicas"
+              rows="4"
+              placeholder="Observações médicas importantes..."
+            ></textarea>
+          </div>
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit" class="submit-button">Cadastrar Pet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  
