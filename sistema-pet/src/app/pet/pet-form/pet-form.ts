@@ -1,7 +1,7 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PetService } from '../../service/pet-service';
 import { DonoService } from '../../service/dono-service';
 import { Pet, Vacina } from '../../model/pet';
@@ -14,7 +14,7 @@ import { Dono } from '../../model/dono';
   templateUrl: './pet-form.html',
   styleUrl: './pet-form.css'
 })
-export class CadastrarPet {
+export class CadastrarPet implements OnInit {
   pet = signal<Partial<Pet>>({
     nome: '',
     especie: '',
@@ -30,14 +30,50 @@ export class CadastrarPet {
     observacoesMedicas: '',
     fotos: []
   });
+  petId?: number;
 
   donos = computed(() => this.donoService.getDonos()());
 
   constructor(
     private petService: PetService,
     private donoService: DonoService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.petId = +id;
+      this.carregarPet(this.petId);
+    }
+  }
+
+  carregarPet(id: number): void {
+    this.petService.obterPorId(id).subscribe({
+      next: (pet) => {
+        this.pet.set({
+          nome: pet.nome,
+          especie: pet.especie,
+          raca: pet.raca || '',
+          idade: pet.idade || 0,
+          peso: pet.peso || '',
+          cor: pet.cor || '',
+          sexo: pet.sexo || '',
+          vacinado: pet.vacinado || 'Não',
+          donoId: pet.donoId,
+          vacinas: pet.vacinas || [],
+          observacoes: pet.observacoes || '',
+          observacoesMedicas: pet.observacoesMedicas || '',
+          fotos: pet.fotos || []
+        });
+      },
+      error: (erro) => {
+        console.error(erro);
+        alert('Erro ao carregar pet');
+      }
+    });
+  }
 
   adicionarVacina() {
     const novaVacina: Vacina = {
@@ -84,17 +120,45 @@ export class CadastrarPet {
   salvarPet() {
     if (this.validarFormulario()) {
       const petData = this.pet();
-      this.petService.adicionar(petData as Omit<Pet, 'id'>).subscribe({
-        next: (resposta) => {
-          alert('Pet cadastrado com sucesso!');
-          this.router.navigate(['/']);
-        },
-        error: (erro) => {
-          console.error(erro);
-          alert('Erro ao salvar pet');
-        }
-      });
+      if (this.petId) {
+        this.atualizarPet();
+      } else {
+        this.adicionarPet();
+      }
     }
+  }
+
+  adicionarPet() {
+    const petData = this.pet();
+    this.petService.adicionar(petData as Omit<Pet, 'id'>).subscribe({
+      next: (resposta) => {
+        alert('Pet cadastrado com sucesso!');
+        this.router.navigate(['/']);
+      },
+      error: (erro) => {
+        console.error(erro);
+        alert('Erro ao salvar pet');
+      }
+    });
+  }
+
+  atualizarPet() {
+    const petData = this.pet();
+    const petAtualizado: Pet = {
+      ...petData,
+      id: this.petId
+    } as Pet;
+    
+    this.petService.atualizar(petAtualizado).subscribe({
+      next: (resposta) => {
+        alert('Pet atualizado com sucesso!');
+        this.router.navigate(['/']);
+      },
+      error: (erro) => {
+        console.error(erro);
+        alert('Erro ao atualizar pet');
+      }
+    });
   }
 
   private validarFormulario(): boolean {

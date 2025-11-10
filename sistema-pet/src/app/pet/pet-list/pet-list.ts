@@ -5,9 +5,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pet-list',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './pet-list.html',
-  styleUrl: './pet-list.scss'
+  styleUrl: './pet-list.css'
 })
 export class PetList implements OnInit {
   pets: Pet[] = [];

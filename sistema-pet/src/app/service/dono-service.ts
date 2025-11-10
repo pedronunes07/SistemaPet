@@ -37,8 +37,10 @@ export class DonoService {
     );
   }
 
-  adicionar(dono: Omit<Dono, 'id'>): Observable<Dono> {
-    return this.http.post<Dono>(this.API, dono).pipe(
+  adicionar(dono: Dono | Omit<Dono, 'id'>): Observable<Dono> {
+    // Remove o id se estiver presente para criação
+    const { id, ...donoSemId } = dono as Dono;
+    return this.http.post<Dono>(this.API, donoSemId).pipe(
       tap(novoDono => {
         const donosAtuais = this.donosSignal();
         this.donosSignal.set([...donosAtuais, novoDono]);
