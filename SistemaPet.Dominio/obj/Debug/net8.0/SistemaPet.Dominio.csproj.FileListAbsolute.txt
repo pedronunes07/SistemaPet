@@ -1,0 +1,12 @@
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\bin\Debug\net8.0\SistemaPet.Dominio.deps.json
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\bin\Debug\net8.0\SistemaPet.Dominio.dll
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\bin\Debug\net8.0\SistemaPet.Dominio.pdb
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.AssemblyInfoInputs.cache
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.AssemblyInfo.cs
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.sourcelink.json
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.dll
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\refint\SistemaPet.Dominio.dll
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\SistemaPet.Dominio.pdb
+C:\Users\adm\Desktop\sistema pet\SistemaPet-1\SistemaPet.Dominio\obj\Debug\net8.0\ref\SistemaPet.Dominio.dll
